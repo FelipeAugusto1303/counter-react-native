@@ -6,24 +6,36 @@ import {
     StyleSheet
 } from 'react-native';
 
+import {
+    addValue,
+    resetValue
+} from '../Actions'
+
+import {useDispatch, useSelector} from 'react-redux'
+
 export default CountScreen = () => {
-    const [count, setCount] = React.useState(0)
+    const value = useSelector(state => state.count);
+    const dispatch = useDispatch();
     
     const countPushs = () => {
-        setCount(count + 1);
+        dispatch(addValue())
+    }
+
+    const resetPushs = () => {
+        dispatch(resetValue())
     }
 
     return(
         <View>
             <View style={styles.countContainer}>
-                <Text style={styles.countText}>{count}</Text>
+                <Text style={styles.countText}>{value}</Text>
             </View>
             <View style={styles.appButtons}>
                 <TouchableOpacity style={styles.buttonContainer} onPress={() => countPushs()}>
                     <Text style={styles.pushText}>Push ups</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=>{setCount(0)}} style={styles.buttonReset}>
-                    <Text>reset</Text>
+                <TouchableOpacity onPress={()=>{resetPushs()}} style={styles.buttonReset}>
+                    <Text style={styles.resetText}>reset</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -64,9 +76,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#0fc9f7',
         height: 70,
-        width: 70,
+        width: 150,
         borderRadius: 20,
         marginTop: 15
+    },
+    resetText:{
+        fontSize: 15,
+        color: '#fff',
+        fontWeight: 'bold'
     }
 })
 

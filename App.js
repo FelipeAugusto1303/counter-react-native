@@ -3,11 +3,20 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CountScreen from './components/CountScreen'
 
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import AllReducers from './reducers'
+
+const store = createStore(AllReducers)
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <CountScreen/>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <CountScreen/>
+      </View>
+    </Provider>
+    
   );
 }
 
