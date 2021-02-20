@@ -14,8 +14,8 @@ This project has as objective to apply knowledge of redux in Android app
 
 Run this code initialize the app
 
-> $ npm install
-> $ expo start
+1. > $ npm install
+2. > $ expo start
 
 
 ## app image
