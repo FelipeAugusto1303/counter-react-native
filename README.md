@@ -18,6 +18,6 @@ Run this code initialize the app
 2. > $ expo start
 
 
-## app image
+## Screenshots
 
 ![title](./images/app_image.jpg)
